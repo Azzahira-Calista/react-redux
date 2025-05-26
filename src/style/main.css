@@ -1,0 +1,223 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  color: #333;
+}
+
+.homepage {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.thread-item {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+.thread-item-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.thread-item:hover {
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
+}
+
+.thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #54b3d6;
+}
+
+.fallback-avatar {
+  font-size: 40px;
+  color: #54b3d6;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #222;
+}
+
+.thread-category {
+  font-size: 0.95rem;
+  color: #54b3d6;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.thread-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.thread-body {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 18px;
+  line-height: 1.7;
+}
+
+.thread-meta {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 6px;
+  color: #54b3d6;
+  vertical-align: middle;
+}
+
+.navbar {
+  /* background-color: #111; */
+  padding: 1rem 2rem;
+}
+
+.nav-list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fancy-link {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: #54b3d6;
+  padding: 0 .25rem;
+  margin: 0 -.25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.fancy-link:hover {
+  color: #fff;
+  box-shadow: inset 200px 0 0 0 #54b3d6;
+}
+
+.thread-detail-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.05);
+}
+
+.thread-detail-container .thread-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.thread-meta {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+}
+
+.thread-meta .category {
+  color: #54b3d6;
+  font-weight: 600;
+}
+
+.thread-meta .created-at {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.owner-info {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.owner-info .avatar {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #54b3d6;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.thread-body {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.comments-section h3 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.comment {
+  border-top: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.comment-owner {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.comment-owner .avatar {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #54b3d6;
+}
+
+.comment-content {
+  margin-top: 0.4rem;
+  color: #444;
+  font-size: 1rem;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.3rem;
+}
