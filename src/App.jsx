@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ThreadDetailPage from './pages/ThreadDetailPage';
 import LeaderboardPage from './pages/LeaderboardPage';
+import AddThreadPage  from './pages/CreateThread';
 import Navbar from './components/Navbar';
 import Loading from './components/Loading';
 
@@ -50,6 +51,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/thread/:id" element={<ThreadDetailPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/add-thread" element={<AddThreadPage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>

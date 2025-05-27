@@ -164,19 +164,17 @@ const api = (() => {
       throw new Error(responseJson.message);
     }
 
-    return responseJson.data.detailThread;
+    return responseJson.data;
   }
 
 
-  async function createComment(content, id) {
-    const response = await _fetchWithAuth(`${BASE_URL}/threads/${id}/comments`, {
+  async function createComment({ content, commentTo }) {
+    const response = await _fetchWithAuth(`${BASE_URL}/threads/${commentTo}/comments`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        content,
-      }),
+      body: JSON.stringify({ content }),
     });
 
     const responseJson = await response.json();
@@ -191,6 +189,7 @@ const api = (() => {
 
     return comment;
   }
+
 
   async function upVoteThread(id) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads/${id}/up-vote`, {
@@ -307,7 +306,19 @@ const api = (() => {
   }
 
 
-  async function leaderboard() {
+  // function asyncGetLeaderboards() {
+  //   return async (dispatch) => {
+  //     try {
+  //       const leaderboards = await api.leaderboard();
+  //       console.log('Data leaderboards dari API:', leaderboards);
+  //       dispatch(receiveLeaderboardsActionCreator(leaderboards));
+  //     } catch (error) {
+  //       alert(error.message);
+  //     }
+  //   };
+  // }
+
+  async function asyncGetLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`, {
       method: 'GET',
     });
@@ -320,9 +331,9 @@ const api = (() => {
       throw new Error(message);
     }
 
-    const { data: { users } } = responseJson;
+    const { data: { leaderboards } } = responseJson;
 
-    return users;
+    return leaderboards;
   }
 
 
@@ -343,7 +354,8 @@ const api = (() => {
     upVoteComment,
     downVoteComment,
     neutralVoteComment,
-    leaderboard,
+    asyncGetLeaderboards,
+    // getLeaderboard,
   };
 })();
 

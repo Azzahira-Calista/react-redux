@@ -15,8 +15,8 @@ export default function HomePage() {
   }, [dispatch]);
 
   return (
-    <section className="homepage max-w-2xl mx-auto mt-6">
-      <h2 className="text-2xl font-bold mb-4">Diskusi Terbaru</h2>
+    <section className="homepage ">
+      <h2 className="">Diskusi Terbaru</h2>
       <ThreadList threads={threads} users={users} />
     </section>
   );
