@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { FaComments, FaTag, FaUserCircle } from 'react-icons/fa';
+import VoteButtons from './VoteButtons';
+import { postedAt } from '../utils';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncToggleUpVoteThreadDetail, asyncToggleDownVoteThreadDetail, asyncToggleNeutralUpVoteThreadDetail } from '../states/threadDetail/action';
-import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-
 
 export default function ThreadItem({ thread, users }) {
   const {
-    id,
     title,
     body,
     category,
@@ -18,13 +17,6 @@ export default function ThreadItem({ thread, users }) {
   } = thread;
 
   const user = users.find((u) => u.id === ownerId);
-
-  const handleClick = () => {
-    console.log('Thread:', thread);
-    console.log('id:', thread.id);
-    console.log('id:', id);
-
-  };
 
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authUser);
@@ -45,7 +37,7 @@ export default function ThreadItem({ thread, users }) {
 
   const handleDownVote = () => {
     if (isDownVoted) {
-      dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id)); // ✅ ini neutral
+      dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
     } else if (isUpVoted) {
       dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
       dispatch(asyncToggleDownVoteThreadDetail(thread.id));
@@ -54,13 +46,11 @@ export default function ThreadItem({ thread, users }) {
     }
   };
 
-
   return (
     <div className="thread-item">
       <Link
         to={`/thread/${thread.id}`}
         className="thread-item-link"
-        onClick={handleClick}
       >
         <div className="thread-header">
           <div className="user-profile">
@@ -84,30 +74,16 @@ export default function ThreadItem({ thread, users }) {
         />
       </Link>
 
-
       <div className="thread-meta">
-        <span><div className="vote-controls">
-          <button
-            onClick={handleUpVote}
-            aria-label="Upvote"
-            style={{ color: isUpVoted ? 'blue' : 'gray' }}
-          >
-            <FaThumbsUp />
-            <span>{thread.upVotesBy.length}</span>
-          </button>
-
-          <button
-            onClick={handleDownVote}
-            aria-label="Downvote"
-            style={{ color: isDownVoted ? 'red' : 'gray' }}
-          >
-            <FaThumbsDown />
-            <span>{thread.downVotesBy.length}</span>
-          </button>
-        </div>
-
-        </span>
-        <span>{new Date(createdAt).toLocaleString()}</span>
+        <VoteButtons
+          isUpVoted={isUpVoted}
+          isDownVoted={isDownVoted}
+          onUpVote={handleUpVote}
+          onDownVote={handleDownVote}
+          upCount={thread.upVotesBy.length}
+          downCount={thread.downVotesBy.length}
+        />
+        <span>{postedAt(createdAt)}</span>
         <span>
           <FaComments className="icon" /> {totalComments} komentar
         </span>
@@ -115,4 +91,3 @@ export default function ThreadItem({ thread, users }) {
     </div>
   );
 }
-

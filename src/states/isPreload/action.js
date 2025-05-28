@@ -20,15 +20,12 @@ function asyncPreloadProcess() {
     dispatch(showLoading());
 
     try {
-      // preload process
       const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
-    // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      // fallback process
       dispatch(setAuthUserActionCreator(null));
+      console.error('Failed to preload auth user:', error);
     } finally {
-      // end preload process
       dispatch(setIsPreloadActionCreator(false));
     }
     dispatch(hideLoading());

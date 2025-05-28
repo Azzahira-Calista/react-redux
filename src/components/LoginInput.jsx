@@ -6,7 +6,7 @@ function LoginInput({ login }) {
   const [password, onPasswordChange] = useInput('');
 
   return (
-    <form className="login-input">
+    <form className="auth-form">
       <input type="text" value={email} onChange={onEmailChange} placeholder="Email" />
       <input type="password" value={password} onChange={onPasswordChange} placeholder="Password" />
       <button type="button" onClick={() => login({ email, password })}>Login</button>

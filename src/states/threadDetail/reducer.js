@@ -23,20 +23,6 @@ function threadDetailReducer(threadDetail = null, action = {}) {
         ? threadDetail.downVotesBy.filter((id) => id !== action.payload.userId)
         : threadDetail.downVotesBy.concat([action.payload.userId]),
     };
-  // case ActionType.TOGGLE_NEUTRAL_UP_VOTE_THREAD_DETAIL:
-  //   return {
-  //     ...threadDetail,
-  //     upVotesBy:
-  //         threadDetail.upVotesBy.includes(action.payload.userId) &&
-  //         threadDetail.upVotesBy.filter((id) => id !== action.payload.userId),
-  //   };
-  // case ActionType.TOGGLE_NEUTRAL_DOWN_VOTE_THREAD_DETAIL:
-  //   return {
-  //     ...threadDetail,
-  //     downVotesBy:
-  //         threadDetail.downVotesBy.includes(action.payload.userId)
-  //         && threadDetail.downVotesBy.filter((id) => id !== action.payload.userId),
-  //   };
   case ActionType.TOGGLE_NEUTRAL_UP_VOTE_THREAD_DETAIL:
     return {
       ...threadDetail,

@@ -14,14 +14,13 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="login-page">
+    <section className="auth-page">
+      <h2>Login</h2>
       <LoginInput login={onLogin} />
-      <p className="login-page__register">
-        Don't have an account?{' '}
-        <Link to="/register" className="link">
-          Register here
-        </Link>
+      <p className="auth-page__register">
+    Don't have an account? <Link to="/register" className="link">Register here</Link>
       </p>
     </section>
+
   );
 }

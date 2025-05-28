@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import LeaderboardItem from './LeaderboardItem';
 
 function LeaderboardList({ leaderboards }) {
-  console.log('leaderboards:', leaderboards);
 
   if (!Array.isArray(leaderboards) || leaderboards.length === 0) {
     return <p>Belum ada data leaderboard.</p>;

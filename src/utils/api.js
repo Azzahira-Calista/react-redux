@@ -305,19 +305,6 @@ const api = (() => {
     return true;
   }
 
-
-  // function asyncGetLeaderboards() {
-  //   return async (dispatch) => {
-  //     try {
-  //       const leaderboards = await api.leaderboard();
-  //       console.log('Data leaderboards dari API:', leaderboards);
-  //       dispatch(receiveLeaderboardsActionCreator(leaderboards));
-  //     } catch (error) {
-  //       alert(error.message);
-  //     }
-  //   };
-  // }
-
   async function asyncGetLeaderboards() {
     const response = await fetch(`${BASE_URL}/leaderboards`, {
       method: 'GET',
@@ -355,7 +342,6 @@ const api = (() => {
     downVoteComment,
     neutralVoteComment,
     asyncGetLeaderboards,
-    // getLeaderboard,
   };
 })();
 

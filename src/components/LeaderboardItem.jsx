@@ -26,15 +26,5 @@ LeaderboardItem.propTypes = {
   score: PropTypes.number.isRequired,
 };
 
-// biar bisa dipakai di LeaderboardList
-export const leaderboardItemShape = {
-  user: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    email: PropTypes.string,
-    avatar: PropTypes.string,
-  }),
-  score: PropTypes.number,
-};
 
 export default LeaderboardItem;

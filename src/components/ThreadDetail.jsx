@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { postedAt } from '../utils/index.js';
 
 export default function ThreadDetail({ title, category, createdAt, owner, body }) {
   return (
@@ -6,7 +7,8 @@ export default function ThreadDetail({ title, category, createdAt, owner, body }
       <h2 className="thread-title">{title}</h2>
       <div className="thread-meta">
         <span className="category">Category: {category}</span>
-        <span className="created-at">Created At: {new Date(createdAt).toLocaleString()}</span>
+        <span>{postedAt(createdAt)}</span>
+
         <div className="owner-info">
           <img src={owner.avatar} alt={owner.name} className="avatar" />
           <span>{owner.name}</span>

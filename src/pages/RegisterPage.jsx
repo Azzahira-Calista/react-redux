@@ -14,14 +14,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="login-page">
+    <section className="auth-page">
+      <h2>Register</h2>
       <RegisterInput register={onRegister} />
-      <p className="login-page__register">
-        Already have an account?{' '}
-        <Link to="/register" className="link">
-          Login here
-        </Link>
+      <p className="auth-page__register">
+    Already have an account? <Link to="/login" className="link">Login here</Link>
       </p>
     </section>
+
   );
 }

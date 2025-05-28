@@ -59,6 +59,5 @@ ThreadCommentItem.propTypes = {
   ...threadCommentItemShape,
 };
 
-export { threadCommentItemShape };
 
 export default ThreadCommentItem;

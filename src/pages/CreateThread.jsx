@@ -12,7 +12,7 @@ function AddThreadPage() {
     try {dispatch(asyncAddThread(threadData));
       navigate('/');
     } catch (error) {
-      alert('Gagal membuat thread.');
+      alert('Gagal membuat thread.', error.message);
     }
   };
 
