@@ -3,7 +3,7 @@ import { setAuthUserActionCreator } from '../authUser/action';
 import { showLoading, hideLoading } from '../loading/action';
 
 const ActionType = {
-  SET_IS_PRELOAD: 'SET_IS_PRELOAD',
+  SET_IS_PRELOAD: 'isPreload/set',
 };
 
 function setIsPreloadActionCreator(isPreload) {

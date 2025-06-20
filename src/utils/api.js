@@ -153,19 +153,19 @@ const api = (() => {
   }
 
   async function getThreadById(id) {
-    const response = await fetch(`${BASE_URL}/threads/${id}`,
-      {
-        method: 'GET',
-      }
-    );
+    const response = await fetch(`${BASE_URL}/threads/${id}`, {
+      method: 'GET',
+    });
+
     const responseJson = await response.json();
 
     if (responseJson.status !== 'success') {
       throw new Error(responseJson.message);
     }
 
-    return responseJson.data;
+    return responseJson.data.detailThread;
   }
+
 
 
   async function createComment({ content, commentTo }) {

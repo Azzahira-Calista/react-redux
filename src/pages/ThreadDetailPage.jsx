@@ -1,42 +1,31 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import api from '../utils/api';
-import { asyncAddComment } from '../states/threadDetail/action';
+
 import ThreadDetail from '../components/ThreadDetail';
 import CommentForm from '../components/CommentForm';
 import CommentList from '../components/CommentList';
 import VoteButtons from '../components/VoteButtons';
+
 import {
+  asyncReceiveThreadDetail,
+  asyncAddComment,
   asyncToggleUpVoteThreadDetail,
   asyncToggleDownVoteThreadDetail,
-  asyncToggleNeutralUpVoteThreadDetail
+  asyncToggleNeutralUpVoteThreadDetail,
 } from '../states/threadDetail/action';
-
-import { useSelector } from 'react-redux';
 
 export default function ThreadDetailPage() {
   const { id } = useParams();
-  const [thread, setThread] = useState(null);
   const dispatch = useDispatch();
+
+  const thread = useSelector((state) => state.threadDetail);
   const authUser = useSelector((state) => state.authUser);
 
   useEffect(() => {
-    const fetchThread = async () => {
-      try {
-        const data = await api.getThreadById(id);
-        setThread(data.detailThread);
-      } catch (err) {
-        console.error('Error fetching thread detail:', err);
-      }
-    };
+    dispatch(asyncReceiveThreadDetail(id));
+  }, [dispatch, id]);
 
-    fetchThread();
-  }, [id]);
-
-  const handleAddComment = ({ content, commentTo }) => {
-    dispatch(asyncAddComment({ content, commentTo }));
-  };
 
   if (!thread) return <p>Thread not found.</p>;
 
@@ -46,10 +35,10 @@ export default function ThreadDetailPage() {
   const handleUpVote = () => {
     if (isUpVoted) {
       dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
-    } else if (isDownVoted) {
-      dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
-      dispatch(asyncToggleUpVoteThreadDetail(thread.id));
     } else {
+      if (isDownVoted) {
+        dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
+      }
       dispatch(asyncToggleUpVoteThreadDetail(thread.id));
     }
   };
@@ -57,14 +46,17 @@ export default function ThreadDetailPage() {
   const handleDownVote = () => {
     if (isDownVoted) {
       dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
-    } else if (isUpVoted) {
-      dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
-      dispatch(asyncToggleDownVoteThreadDetail(thread.id));
     } else {
+      if (isUpVoted) {
+        dispatch(asyncToggleNeutralUpVoteThreadDetail(thread.id));
+      }
       dispatch(asyncToggleDownVoteThreadDetail(thread.id));
     }
   };
 
+  const handleAddComment = ({ content, commentTo }) => {
+    dispatch(asyncAddComment({ content, commentTo }));
+  };
 
   return (
     <div className="thread-detail-container">

@@ -5,6 +5,7 @@ import usersReducer from './users/reducer';
 import loadingReducer from './loading/reducer';
 import threadsReducer from './threads/reducer';
 import leaderboardsReducer from './leaderboards/reducer';
+import threadDetailReducer from './threadDetail/reducer';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     loading: loadingReducer,
     threads: threadsReducer,
     leaderboards: leaderboardsReducer,
+    threadDetail: threadDetailReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
